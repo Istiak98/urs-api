@@ -3,6 +3,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 var cors = require("cors");
 
+const userRoute = require("./routes/userRoutes");
+const userProfileRoutes = require("./routes/userProfileRoutes");
+
 // express app
 const app = express();
 // cors
@@ -15,6 +18,9 @@ app.use(express.json());
 app.get("/", async (req, res) => {
   res.status(200).json({ api: "URS api 📕" });
 });
+
+app.use("/api/auth", userRoute);
+app.use("/api/user/profile/", userProfileRoutes);
 
 // connect to DB
 mongoose

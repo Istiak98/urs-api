@@ -45,7 +45,10 @@ userSchema.statics.signup = async function (
   password,
   profile_image) {
   const exists = await this.findOne({ email });
-  
+  // validation
+  // if (!email || !password) {
+  //   throw Error("All fields must be filled");
+  // }
   if (exists) {
     throw Error("Email already in use");
   }
@@ -85,4 +88,4 @@ userSchema.statics.login = async function (email, password) {
   return user;
 };
 
-module.exports = mongoose.model("CalendlyUser1", userSchema);
+module.exports = mongoose.model("URSUser1", userSchema);
